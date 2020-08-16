@@ -107,6 +107,10 @@ export class Tree<T> {
     }
   }
 
+  hasChildren(): Boolean {
+    return !!this.children;
+  }
+
   findOneChild(predicate: Partial<Tree<Partial<T>>>): Tree<T> | undefined {
     const result = this.findAllChildren(predicate);
     if (result.length) {
