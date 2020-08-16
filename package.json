@@ -13,6 +13,10 @@
   ],
   "author": "Gabriel Peracio",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabriel-peracio/tree.git"
+  },
   "dependencies": {
     "lodash": "^4.17.20",
     "typescript": "^3.9.7"
