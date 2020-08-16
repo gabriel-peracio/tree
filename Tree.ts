@@ -100,12 +100,18 @@ export class Tree<T> {
     return this.descendants.filter((node) => isMatch(node, predicate));
   }
 
-  findOneDescendant(predicate: Partial<Tree<Partial<T>>>): Tree<T> {
-    return this.findAllDescendants(predicate)[0];
+  findOneDescendant(predicate: Partial<Tree<Partial<T>>>): Tree<T> | undefined {
+    const result = this.findAllDescendants(predicate);
+    if (result.length) {
+      return result[0];
+    }
   }
 
-  findOneChild(predicate: Partial<Tree<Partial<T>>>): Tree<T> {
-    return this.findAllChildren(predicate)[0];
+  findOneChild(predicate: Partial<Tree<Partial<T>>>): Tree<T> | undefined {
+    const result = this.findAllChildren(predicate);
+    if (result.length) {
+      return result[0];
+    }
   }
 
   appendChild(nodeData: serializedTree<T>): Tree<T> {
