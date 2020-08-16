@@ -92,6 +92,18 @@ export class Tree<T> {
     return nodeList;
   }
 
+  getPath(indexer: keyof T, includeRoot: boolean = false) {
+    const ancestors = this.ancestors;
+    if (!includeRoot) {
+      ancestors.pop();
+    }
+    ancestors.reverse();
+    const path = ancestors.map((a) => a.data[indexer]);
+
+    path.push(this.data[indexer]);
+    return path;
+  }
+
   findAllChildren(predicate: Partial<Tree<Partial<T>>>): Array<Tree<T>> {
     return this.childrenList.filter((node) => isMatch(node, predicate));
   }
