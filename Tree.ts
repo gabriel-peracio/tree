@@ -27,7 +27,11 @@ export class Tree<T> {
       });
     }
   }
-
+  /**
+   * Looks through the descendants until it finds a node whose key matches the one provided
+   * The node may return itself if the key matches
+   * @param key the key
+   */
   get(key: string): Tree<T> | undefined {
     if (this.key === key) return this;
     return this.descendants.find((node) => node.key === key);
@@ -37,6 +41,9 @@ export class Tree<T> {
     return !this.parent;
   }
 
+  /**
+   * Returns the depth of the current node relative to the root
+   */
   get depth() {
     let depth = 0;
     let node: Tree<T> = this;
@@ -47,6 +54,9 @@ export class Tree<T> {
     return depth;
   }
 
+  /**
+   * Returns the root node of the tree this node is attached to
+   */
   get rootNode() {
     let node: Tree<T> = this;
     while (node.parent) {
@@ -93,6 +103,17 @@ export class Tree<T> {
     return nodeList;
   }
 
+  /**
+   * Gets the value of the `indexer` attribute of the current node and all its ancestors, and puts
+   * them in an array, thus forming a "path"
+   * @param indexer the name of an attribute of a node
+   * @param includeRoot whether the root element should be included in the path
+   *
+   * @example
+   * ```
+   * myCategoryNode.getPath('categoryName',false); // returns ['office', 'furniture', 'chairs']
+   * ```
+   */
   getPath(indexer: keyof T, includeRoot: boolean = false) {
     const ancestors = this.ancestors;
     if (!includeRoot) {
