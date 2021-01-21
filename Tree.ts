@@ -29,6 +29,7 @@ export class Tree<T> {
   }
 
   get(key: string): Tree<T> | undefined {
+    if (this.key === key) return this;
     return this.descendants.find((node) => node.key === key);
   }
 
