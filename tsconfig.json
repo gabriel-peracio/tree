@@ -2,18 +2,13 @@
   "compilerOptions": {
     "outDir": "dist",
     "target": "ES2016",
-    "lib": [
-      "es2016",
-      "ES2020"
-    ],
+    "lib": ["es2016", "ES2020"],
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "declaration": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["lodash"]
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "files": ["./index.ts"]
 }

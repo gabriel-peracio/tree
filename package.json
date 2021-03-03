@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "prepublish": "tsc",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc --build ./tsconfig.json",
+    "install": "yarn build"
   },
   "keywords": [
     "tree",
